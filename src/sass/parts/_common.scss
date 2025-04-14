@@ -1,0 +1,25 @@
+/* _common.scss 共通パーツ（body, header, footerなど）*/
+@use '../globals/index' as *;
+
+body {
+  font-family: $font-body;
+  color: $color-black;
+  background-color: $color-white;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.header, .footer {
+  width: 100%;
+  background-color: $color-black;
+  color: $color-white;
+}

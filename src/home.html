@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRO SHOP WAVE | カスタムパーツ</title>
+    <link rel="stylesheet" href="https://unpkg.com/ress@5.0.2/ress.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="module" src="js/main.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header__container">
+            <h1 class="header__logo"><a href="home.html">PRO SHOP WAVE</a></h1>
+            <nav class="header__nav">
+                <ul class="header__menu">
+                    <li><a href="#">カスタムパーツ</a></li>
+                    <li><a href="#">アパレル</a></li>
+                    <li><a href="#">ブログ</a></li>
+                    <li><a href="#">お問い合わせ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+            <picture>
+                <source srcset="images/hero_mobile.png" media="(max-width: 960px)">
+                <img src="images/hero.png" alt="ドリフト車のメインビジュアル">
+            </picture>
+            <div class="hero__text">
+                <h2>あなたの車に最適なカスタムパーツ</h2>
+                <p>高品質なパーツでチューニングをアップグレード</p>
+                <a href="#" class="btn btn--red">購入する</a>
+            </div>
+        </section>
+
+        <section class="products">
+            <h2 class="section-title">最新のカスタムパーツをチェックしよう</h2>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="images/part1.png" alt="エアロパーツ"></div>
+                    <div class="swiper-slide"><img src="images/part2.png" alt="マフラー"></div>
+                    <div class="swiper-slide"><img src="images/part3.png" alt="ホイール"></div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </section>
+
+        <section class="news">
+            <h2 class="section-title">最新のチューニング情報</h2>
+            <div class="news__grid">
+                <article class="news__item">
+                    <img src="images/news1.png" alt="ニュース1">
+                    <h3>新商品のエアロが登場！</h3>
+                    <p>新しいデザインのエアロパーツが登場しました。</p>
+                </article>
+                <article class="news__item">
+                    <img src="images/news2.png" alt="ニュース2">
+                    <h3>チューニングイベント開催決定！</h3>
+                    <p>最新のチューニング技術を体験できるイベントを開催します。</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 PRO SHOP WAVE. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/gsap.min.js"></script>
+</body>
+</html>
