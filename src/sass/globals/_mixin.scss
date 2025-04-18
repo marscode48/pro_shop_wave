@@ -22,12 +22,10 @@
 
 // リンク時ホバー
 @mixin link-hovers($opacity: 0.75, $afterTextColor: rgb(220, 220, 220)) {
-  a {
-    transition: all 0.3s;
-    &:hover {
-      color: $afterTextColor;
-      opacity: $opacity;
-    }
+  transition: all 0.3s;
+  &:hover {
+    color: $afterTextColor;
+    opacity: $opacity;
   }
 }
 
