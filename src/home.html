@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PRO SHOP WAVE | カスタムパーツ専門店</title>
+  <!-- リセットCSS -->
+  <link rel="stylesheet" href="https://unpkg.com/ress@5.0.2/dist/ress.min.css" />
+  <!-- Google Fonts -->
+  <!-- Oswald + Noto Sans JP -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome CDN -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- メニューを開いたときに背景を暗くぼかす -->
+  <div class="nav-overlay"></div>
+  <!-- Header -->
+  <header class="header">
+    <div class="header__inner">
+      <!-- ハンバーガーボタン（SPのみ表示） -->
+      <button class="header__toggle" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
+    
+      <!-- ロゴエリア -->
+      <div class="header__logo">
+        <img src="https://placehold.jp/180x40/000000/ffffff.png?text=PRO+SHOP+WAVE" alt="ロゴ" />
+      </div>
+            
+      <!-- グローバルナビ -->
+      <nav class="header__nav">
+        <ul class="header__nav-list">
+          <li class="header__nav-item"><a href="#">Parts</a></li>
+          <li class="header__nav-item"><a href="#">Apparel</a></li>
+          <li class="header__nav-item"><a href="#">Blog</a></li>
+          <li class="header__nav-item"><a href="#">Contact</a></li>
+          <li class="header__nav-item"><a href="#">Access</a></li>
+
+          <!-- 多言語切り替え（SPのみ表示） -->
+          <li class="header__nav-item header__nav-lang">
+            <a href="#" class="is-active">🇯🇵 JP</a>
+            <span class="header__lang-separator">|</span>
+            <a href="#">🇺🇸 EN</a>
+          </li>
+        </ul>
+      </nav>
+  
+      <!-- ユーティリティエリア -->
+      <div class="header__utils">
+  
+        <!-- SP用: 検索アイコン -->
+        <button class="header__search-toggle" aria-label="検索">
+          <i class="fas fa-search"></i>
+        </button>
+
+        <!-- PC用：検索フォーム -->
+        <form action="/search" method="get" class="header__search-form">
+          <input type="text" name="s" placeholder="パーツやブログを検索">
+          <button type="submit" aria-label="検索"><i class="fas fa-search"></i></button>
+        </form>
+
+        <!-- カートアイコン -->
+        <div class="header__cart">
+          <a href="/cart" aria-label="カート">
+            <i class="fas fa-shopping-cart"></i>
+          </a>
+        </div>
+  
+        <!-- 多言語切り替え -->
+        <div class="header__lang">
+          <a href="#" class="is-active">🇯🇵 JP</a>
+          <span class="header__lang-separator">|</span>
+          <a href="#">🇺🇸 EN</a>
+        </div>
+  
+      </div>
+  
+    </div>
+  </header>
+
+  <!-- SP検索フォーム -->
+  <form action="/search" method="get" class="search-form-sp">
+    <input type="text" name="s" placeholder="キーワードを検索">
+    <button type="submit"><i class="fas fa-search"></i></button>
+  </form>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <picture>
+        <source media="(min-width: 960px)" srcset="https://placehold.jp/1920x600.png?text=Hero+Image+PC">
+        <img src="https://placehold.jp/768x400.png?text=Hero+Image+SP" alt="ヒーロー画像" class="hero__image" />
+      </picture>
+      <div class="hero__content">
+        <h1 class="hero__title">あなたの車に最適なカスタムパーツ</h1>
+        <p class="hero__text">最新のトレンドと技術でカスタムをもっと楽しく。</p>
+        <button class="hero__cta">詳しく見る</button>
+      </div>
+    </section>
+
+    <!-- New Parts Section -->
+    <section class="section section--new">
+      <h2 class="section__title">最新のカスタムパーツをチェックしよう</h2>
+      <div class="card-list">
+        <article class="card">
+          <picture>
+            <source media="(min-width: 960px)" srcset="https://placehold.jp/400x300.png?text=新入荷+PC">
+            <img src="https://placehold.jp/300x200.png?text=新入荷+SP" alt="新入荷アイテム" class="card__image">
+          </picture>
+          <h3 class="card__title">新入荷アイテムのご紹介</h3>
+          <p class="card__text">最新パーツをいち早くチェックしよう</p>
+        </article>
+        <article class="card">
+          <picture>
+            <source media="(min-width: 960px)" srcset="https://placehold.jp/400x300.png?text=セール+PC">
+            <img src="https://placehold.jp/300x200.png?text=セール+SP" alt="セール情報" class="card__image">
+          </picture>
+          <h3 class="card__title">お得なセール情報を活用しよう</h3>
+          <p class="card__text">割引情報を見逃すな！</p>
+        </article>
+        <article class="card">
+          <picture>
+            <source media="(min-width: 960px)" srcset="https://placehold.jp/400x300.png?text=人気商品+PC">
+            <img src="https://placehold.jp/300x200.png?text=人気商品+SP" alt="人気商品の購入情報" class="card__image">
+          </picture>
+          <h3 class="card__title">人気商品の購入情報</h3>
+          <p class="card__text">レビュー多数の人気パーツはこちら</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="section section--categories">
+      <div class="section__flex">
+        <div class="section__content">
+          <h2 class="section__title">注目のカスタムパーツカテゴリ</h2>
+          <p class="section__text">話題のホイール、マフラー、ライトなど一挙にチェック！</p>
+          <button class="section__button">もっと見る</button>
+        </div>
+        <picture>
+          <source media="(min-width: 960px)" srcset="https://placehold.jp/500x350.png?text=カテゴリ+PC">
+          <img src="https://placehold.jp/350x250.png?text=カテゴリ+SP" alt="カテゴリ画像" class="section__image">
+        </picture>
+      </div>
+    </section>
+
+    <!-- Apparel Categories -->
+    <section class="section section--categories section--reverse">
+      <div class="section__flex">
+        <picture>
+          <source media="(min-width: 960px)" srcset="https://placehold.jp/500x350.png?text=アパレル+PC">
+          <img src="https://placehold.jp/350x250.png?text=アパレル+SP" alt="アパレルカテゴリ" class="section__image">
+        </picture>
+        <div class="section__content">
+          <h2 class="section__title">注目のカテゴリー：アパレル</h2>
+          <p class="section__text">モータースポーツ系アパレルで気分も上がる！</p>
+          <button class="section__button">見る</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="section section--blog">
+      <h2 class="section__title">最新のチューニング情報</h2>
+      <div class="card-list">
+        <article class="card">
+          <picture>
+            <source media="(min-width: 960px)" srcset="https://placehold.jp/400x300.png?text=レビュー+PC">
+            <img src="https://placehold.jp/300x200.png?text=レビュー+SP" alt="レビュー" class="card__image">
+          </picture>
+          <h3 class="card__title">最新のレビューを見逃すな！</h3>
+          <p class="card__text">開発秘話や魅力をご紹介。</p>
+        </article>
+        <article class="card">
+          <picture>
+            <source media="(min-width: 960px)" srcset="https://placehold.jp/400x300.png?text=イベント+PC">
+            <img src="https://placehold.jp/300x200.png?text=イベント+SP" alt="イベント" class="card__image">
+          </picture>
+          <h3 class="card__title">イベントレポートをチェックしよう</h3>
+          <p class="card__text">現地の雰囲気を感じ取れるレポ。</p>
+        </article>
+        <article class="card">
+          <picture>
+            <source media="(min-width: 960px)" srcset="https://placehold.jp/400x300.png?text=新情報+PC">
+            <img src="https://placehold.jp/300x200.png?text=新情報+SP" alt="ブログ" class="card__image">
+          </picture>
+          <h3 class="card__title">新技術情報や裏話まとめ</h3>
+          <p class="card__text">マニア必見の深掘り内容も！</p>
+        </article>
+      </div>
+      <button class="section__button">もっと見る</button>
+    </section>
+
+    <!-- SNSセクション -->
+    <section class="section section--sns">
+      <h2 class="section__title">INSTAGRAMで最新カスタム情報をチェック！</h2>
+      <div class="sns__grid">
+
+        <!-- Instagram埋め込み1 -->
+        <div class="sns__item">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/XXXXXXX/" data-instgrm-version="14" style="background:#fff; border:none; margin:0 auto; max-width:540px; width:100%;"></blockquote>
+        </div>
+
+        <!-- Instagram埋め込み2 -->
+        <div class="sns__item">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/YYYYYYY/" data-instgrm-version="14" style="background:#fff; border:none; margin:0 auto; max-width:540px; width:100%;"></blockquote>
+        </div>
+
+        <!-- Instagram埋め込み3 -->
+        <div class="sns__item">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/ZZZZZZZ/" data-instgrm-version="14" style="background:#fff; border:none; margin:0 auto; max-width:540px; width:100%;"></blockquote>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Instagram JS -->
+    <script async src="//www.instagram.com/embed.js"></script>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+  
+      <!-- ナビゲーション -->
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="/">
+            <img src="https://placehold.jp/180x40.png?text=PRO+SHOP+WAVE" alt="PRO SHOP WAVE ロゴ">
+          </a>
+        </div>
+        <ul class="footer__nav">
+          <li><a href="#">Parts</a></li>
+          <li><a href="#">Apparel</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Access</a></li>
+        </ul>      
+      </div>
+  
+      <!-- 情報エリア -->
+      <div class="footer__middle">
+        <div class="footer__contact">
+          <p>〒123-4567 東京都渋谷区サンプル1-2-3<br>電話：03-1234-5678</p>
+        </div>
+        <div class="footer__sns">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+  
+      <!-- ポリシーなど -->
+      <div class="footer__links">
+        <a href="#">利用規約</a>
+        <a href="#">プライバシーポリシー</a>
+        <a href="#">特商法表記</a>
+      </div>
+  
+      <!-- コピーライト -->
+      <div class="footer__copy">
+        © 2024 PRO SHOP WAVE
+      </div>
+  
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,607 @@
+/* _common.scss 共通パーツ（body, header, footerなど）*/
+// @use '../globals/index' as *;
+
+@use '../globals/variables' as *;
+@use '../globals/mixin' as *;
+@use '../globals/mq' as *;
+
+body {
+  font-family: $font-body;
+  color: $color-black;
+  background-color: $color-white;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+  padding-left: 0;
+
+  li::marker {
+    display: none;
+  }
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); // 半透明黒
+  backdrop-filter: blur(4px);          // 背景をぼかす
+  z-index: 98;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+
+  &.is-active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+// ========================
+// HEADER 共通
+// ========================
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: $header-height;
+  padding: 0 5vw;
+  background-color: $color-black;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); // オプションで影
+
+  &.is-scrolled {
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: all 0.3s ease;
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+    height: 100%;
+
+    @include mq(lg) {
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__toggle {
+    width: 30px;
+    height: 24px;
+    position: relative;
+    cursor: pointer;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 100;
+
+    span {
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      background-color: $color-white;
+      left: 0;
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+
+      &:nth-child(1) {
+        top: 0;
+      }
+      &:nth-child(2) {
+        top: 10px;
+      }
+      &:nth-child(3) {
+        top: 20px;
+      }
+    }
+    
+    &.is-open {
+      span {
+        background-color: $color-red;
+
+        &:nth-child(1) {
+          top: 10px;
+          transform: rotate(45deg);
+        }
+        &:nth-child(2) {
+          opacity: 0;
+        }
+        &:nth-child(3) {
+          top: 10px;
+          transform: rotate(-45deg);
+        }
+      }
+    }
+
+    @include mq(lg) {
+      display: none;
+    }
+  }
+
+  &__logo {
+    height: 100%;
+    font-family: $font-heading;
+    font-size: 1.2rem;
+    text-align: center;
+
+    @include mq(lg) {
+      text-align: left;
+    }
+
+    img {
+      height: 100%;
+    }
+
+    a {
+      text-decoration: none;
+      color: $color-white;
+    }
+  }
+
+  &__nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 75vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 99;
+    padding-top: $header-height;
+    overflow-y: auto;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+
+    &.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0);
+      pointer-events: auto;
+    }
+
+    @include mq(lg) {
+      position: static;
+      width: auto;
+      height: auto;
+      padding-top: 0;
+      transform: none;
+      opacity: 1;
+      overflow: visible;
+      visibility: visible;
+      pointer-events: auto;
+      background: none;
+    }
+
+    &-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+
+      @include mq(lg) {
+        flex-direction: row;
+        gap: 2rem;
+      }
+    }
+
+    &-item {
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none; // 開く前にクリックできないように
+
+      // is-open時のアニメーション（SPのみ）
+      .header__nav.is-open & {
+        animation: fadeInUp 0.4s ease forwards;
+        pointer-events: auto;
+        // 遅延付きで順番に表示
+        &:nth-child(1) { animation-delay: 0.1s; }
+        &:nth-child(2) { animation-delay: 0.2s; }
+        &:nth-child(3) { animation-delay: 0.3s; }
+        &:nth-child(4) { animation-delay: 0.4s; }
+        &:nth-child(5) { animation-delay: 0.5s; }
+        &:nth-child(6) { animation-delay: 0.6s; } // 言語切替など追加分
+      }
+
+      // PCでは常時表示＆アニメ無効
+      @include mq(lg) {
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+        animation: none;
+      }
+  
+      & a {
+        position: relative;
+        text-decoration: none;
+        font-family: $font-heading;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 500;
+        color: $color-white;
+        padding-bottom: 4px;
+        transition: color 0.3s;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0%;
+          height: 2px;
+          background-color: $color-red;
+          transition: width 0.3s ease;
+        }
+      
+        &:hover::after {
+          width: 100%;
+        }
+      
+        &.is-active::after {
+          width: 100%;
+        }
+      }
+    }
+
+    &-lang {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.3rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid $color-gray;
+      font-size: 0.9rem;
+    
+      a {
+        color: $color-white;
+        text-decoration: none;
+    
+        &.is-active {
+          // color: $color-red;
+          font-weight: bold;
+        }
+      }
+    
+      .header__lang-separator {
+        color: $color-white;
+        padding: 0 0.3rem;
+      }
+    
+      @include mq(lg) {
+        display: none; // PCでは表示しない
+      }
+    }
+  }
+
+  &__utils {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: auto;
+
+    a,
+    button {
+      color: $color-white;
+      font-size: 1rem;
+    }
+
+    @include mq(lg) {
+      flex-direction: row;
+      gap: 2rem;
+    }
+  }
+
+  &__search {
+    display: flex;
+    width: 100%;
+    max-width: 280px;
+
+    &-toggle {
+      display: flex;
+
+      @include mq(lg) {
+        display: none; // PCでは非表示
+      }
+    }
+
+    &-form {
+      display: none;
+
+      @include mq(lg) {
+        display: flex;
+        align-items: center;
+
+        input {
+          padding: 0.4rem 0.8rem;
+          border: 1px solid $color-gray;
+          border-radius: 4px 0 0 4px;
+          font-size: 0.9rem;
+          color: $color-black;
+        }
+
+        button {
+          background: $color-red;
+          color: $color-white;
+          padding: 0.4rem 0.8rem;
+          border: none;
+          border-radius: 0 4px 4px 0;
+          cursor: pointer;
+
+          i {
+            color: $color-white;
+            font-size: 1rem;
+          }
+    
+          img {
+            width: 20px;
+            height: 20px;
+          }
+    
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+      }
+    }
+  }
+
+  &__cart {
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $color-white;
+      font-size: 1.4rem;
+      transition: color 0.3s;
+  
+      &:hover {
+        color: $color-red;
+      }
+    }
+  
+    i {
+      pointer-events: none; // アイコンクリックでもリンクが効くように
+    }
+  }
+
+  &__lang {
+    display: none;
+
+    @include mq(lg) {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      a {
+        position: relative;
+        display: inline-block;
+        color: $color-white;
+        text-decoration: none;
+        font-size: 0.9rem;
+        padding-bottom: 3px;
+        transition: color 0.3s;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0%;
+          height: 2px;
+          background-color: $color-red;
+          transition: width 0.3s ease;
+        }
+
+        &:hover::after {
+          width: 100%;
+        }
+
+        &.is-active::after {
+          width: 100%;
+        }
+      }
+
+      &-separator {
+        color: $color-white;
+        padding: 0 0.3rem;
+      }
+    }
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.search-form-sp {
+  position: fixed;
+  top: $header-height; // ← ヘッダーの高さと同じ
+  left: 0;
+  width: 100%;
+  z-index: 200;
+  background: $color-black;
+  padding: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+
+  input {
+    flex: 1;
+    padding: 0.5rem 1rem;
+    background: $color-white;
+    color: $color-black;
+    border: 1px solid $color-gray;
+  }
+
+  button {
+    background: $color-red;
+    color: $color-white;
+    border: none;
+    padding: 0.5rem 1rem;
+  }
+
+  &.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  @include mq(lg) {
+    display: none !important;
+  }
+}
+
+// ========================
+// FOOTER 共通
+// ========================
+.footer {
+  background: $color-black;
+  color: $color-white;
+  padding: 3rem 5vw;
+  font-size: 0.9rem;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+
+    @include mq(lg) {
+      text-align: left;
+    }
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    @include mq(lg) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  .footer__brand {
+    img {
+      width: 180px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+  
+      @include mq(lg) {
+        margin: 0;
+      }
+    }
+  }
+
+  &__nav {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    @include mq(lg) {
+      justify-content: flex-start;
+    }
+
+    li a {
+      color: $color-white;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-family: $font-heading;
+      @include link-hovers(0.75, $color-red);
+    }
+  }
+
+  &__middle {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    @include mq(lg) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__contact {
+    line-height: 1.6;
+  }
+
+  &____sns {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+  
+    a {
+      color: $color-white;
+      font-size: 1.4rem;
+      transition: color 0.3s;
+  
+      &:hover {
+        color: $color-red;
+      }
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    @include mq(lg) {
+      flex-direction: row;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    a {
+      color: $color-white;
+      text-decoration: none;
+      font-size: 0.85rem;
+      @include link-hovers(0.7, $color-red);
+    }
+  }
+
+  &__copy {
+    margin-top: 1.5rem;
+    font-size: 0.8rem;
+    color: $color-gray;
+    text-align: center;
+  }
+}
