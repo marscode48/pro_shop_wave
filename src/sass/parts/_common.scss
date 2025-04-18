@@ -540,7 +540,24 @@ ul, ol {
   }
 
   &__contact {
-    line-height: 1.6;
+    address {
+      font-style: normal;
+      line-height: 1.6;
+  
+      p {
+        margin: 0.2rem 0;
+      }
+  
+      a {
+        color: $color-white;
+        text-decoration: none;
+        word-break: break-word;
+  
+        &:hover {
+          color: $color-red;
+        }
+      }
+    }
   }
 
   &____sns {
