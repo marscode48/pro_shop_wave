@@ -552,10 +552,7 @@ ul, ol {
         color: $color-white;
         text-decoration: none;
         word-break: break-word;
-  
-        &:hover {
-          color: $color-red;
-        }
+        @include link-underline-animate();
       }
     }
   }
