@@ -519,11 +519,11 @@ ul, ol {
 
     li a {
       color: $color-white;
+      font-family: $font-heading;
       text-decoration: none;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      font-family: $font-heading;
-      @include link-hovers(0.75, $color-red);
+      @include link-underline-animate();
     }
   }
 
