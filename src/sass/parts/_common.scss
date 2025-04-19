@@ -240,6 +240,11 @@ ul, ol {
         letter-spacing: 0.1em;
         font-weight: 500;
         padding-bottom: 4px;
+        font-size: 1rem;
+
+        @include mq(lg) {
+          font-size: 1.1rem;
+        }
       }
     }
 
@@ -282,7 +287,7 @@ ul, ol {
     a,
     button {
       color: $color-white;
-      font-size: 1rem;
+      font-size: 1.2rem;
     }
 
     @include mq(lg) {
@@ -322,6 +327,7 @@ ul, ol {
         button {
           background: $color-red;
           color: $color-white;
+          font-size: 1rem;
           padding: 0.4rem 0.8rem;
           border: none;
           border-radius: 0 4px 4px 0;
@@ -351,8 +357,11 @@ ul, ol {
       align-items: center;
       justify-content: center;
       color: $color-white;
-      font-size: 1.4rem;
       transition: color 0.3s;
+
+      @include mq(lg) {
+        font-size: 1.4rem;
+      }
   
       &:hover {
         color: $color-red;
