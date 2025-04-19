@@ -1,5 +1,6 @@
 /* _mixin.scss 汎用mixin（アニメーション、レイアウト補助）*/
 @use 'sass:math';
+@use './variables' as *;
 
 // アニメーション
 @mixin animation($name, $duration: 1s, $timing-function: ease, $delay: 0s, $iteration-count: 1, $direction: normal, $fill-mode: forwards) {
@@ -75,4 +76,27 @@
 
 @mixin sp-px-to-vw($property, $px-value, $base-width: 393) {
   #{$property}: math.div($px-value, $base-width) * 100vw;
+}
+
+// 下線アニメーションのmixin
+@mixin link-underline-animate($color: $color-red, $height: 2px, $duration: 0.3s) {
+  position: relative;
+  text-decoration: none;
+  display: inline-block;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: $height;
+    background-color: $color;
+    transition: width $duration ease;
+  }
+
+  &:hover::after,
+  &.is-active::after {
+    width: 100%;
+  }
 }

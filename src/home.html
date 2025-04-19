@@ -237,19 +237,31 @@
             <img src="https://placehold.jp/180x40.png?text=PRO+SHOP+WAVE" alt="PRO SHOP WAVE ロゴ">
           </a>
         </div>
-        <ul class="footer__nav">
-          <li><a href="#">Parts</a></li>
-          <li><a href="#">Apparel</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Access</a></li>
-        </ul>      
+        <nav class="footer__nav" aria-label="フッターナビゲーション">
+          <ul class="footer__nav-list">
+            <li class="footer__nav-item"><a href="#">Parts</a></li>
+            <li class="footer__nav-item"><a href="#">Apparel</a></li>
+            <li class="footer__nav-item"><a href="#">Blog</a></li>
+            <li class="footer__nav-item"><a href="#">Contact</a></li>
+            <li class="footer__nav-item"><a href="#">Access</a></li>
+          </ul>
+        </nav>
       </div>
   
       <!-- 情報エリア -->
       <div class="footer__middle">
         <div class="footer__contact">
-          <p>〒123-4567 東京都渋谷区サンプル1-2-3<br>電話：03-1234-5678</p>
+          <address>
+            <p><strong>PRO SHOP WAVE</strong></p>
+            <p>
+              <a href="https://maps.google.com/?q=東京都品川区〇〇1-2-3" target="_blank" rel="noopener noreferrer">
+                〒000-0000 東京都品川区〇〇1-2-3
+              </a>
+            </p>
+            <p>TEL: <a href="tel:0312345678">03-1234-5678</a></p>
+            <p>Mail: <a href="mailto:info@proshop-wave.jp">info@proshop-wave.jp</a></p>
+            <p>営業時間：10:00〜19:00（定休日：水曜）</p>
+          </address>
         </div>
         <div class="footer__sns">
           <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -259,7 +271,7 @@
       </div>
   
       <!-- ポリシーなど -->
-      <div class="footer__links">
+      <div class="footer__legal">
         <a href="#">利用規約</a>
         <a href="#">プライバシーポリシー</a>
         <a href="#">特商法表記</a>

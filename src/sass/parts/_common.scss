@@ -232,34 +232,14 @@ ul, ol {
       }
   
       & a {
-        position: relative;
-        text-decoration: none;
+        @include link-underline-animate();
+        color: $color-white;
         font-family: $font-heading;
+        text-decoration: none;
         text-transform: uppercase;
         letter-spacing: 0.1em;
         font-weight: 500;
-        color: $color-white;
         padding-bottom: 4px;
-        transition: color 0.3s;
-
-        &::after {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 0%;
-          height: 2px;
-          background-color: $color-red;
-          transition: width 0.3s ease;
-        }
-      
-        &:hover::after {
-          width: 100%;
-        }
-      
-        &.is-active::after {
-          width: 100%;
-        }
       }
     }
 
@@ -506,7 +486,7 @@ ul, ol {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: 2rem;
 
     @include mq(lg) {
       flex-direction: row;
@@ -528,22 +508,35 @@ ul, ol {
   }
 
   &__nav {
-    display: flex;
-    gap: 1.2rem;
-    flex-wrap: wrap;
-    justify-content: center;
 
-    @include mq(lg) {
-      justify-content: flex-start;
+    &-list {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+  
+      @include mq(lg) {
+        justify-content: flex-start;
+        flex-direction: row;
+      }
     }
 
-    li a {
-      color: $color-white;
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-family: $font-heading;
-      @include link-hovers(0.75, $color-red);
+    &-item {
+      a {
+        color: $color-white;
+        font-family: $font-heading;
+        font-size: 1.1rem;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        @include link-underline-animate();
+
+        @include mq(lg) {
+          font-size: 1.2rem;
+        }
+      }
     }
   }
 
@@ -560,10 +553,24 @@ ul, ol {
   }
 
   &__contact {
-    line-height: 1.6;
+    address {
+      font-style: normal;
+      line-height: 1.6;
+  
+      p {
+        margin: 0.2rem 0;
+      }
+  
+      a {
+        color: $color-white;
+        text-decoration: none;
+        word-break: break-word;
+        @include link-underline-animate();
+      }
+    }
   }
 
-  &____sns {
+  &__sns {
     display: flex;
     gap: 1.2rem;
     justify-content: center;
@@ -579,7 +586,7 @@ ul, ol {
     }
   }
 
-  &__links {
+  &__legal {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -591,10 +598,9 @@ ul, ol {
     }
 
     a {
+      @include link-underline-animate(); // 赤線アニメーション
       color: $color-white;
-      text-decoration: none;
-      font-size: 0.85rem;
-      @include link-hovers(0.7, $color-red);
+      font-size: 0.8rem;
     }
   }
 
