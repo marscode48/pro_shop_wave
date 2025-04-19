@@ -508,22 +508,35 @@ ul, ol {
   }
 
   &__nav {
-    display: flex;
-    gap: 1.2rem;
-    flex-wrap: wrap;
-    justify-content: center;
 
-    @include mq(lg) {
-      justify-content: flex-start;
+    &-list {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+  
+      @include mq(lg) {
+        justify-content: flex-start;
+        flex-direction: row;
+      }
     }
 
-    li a {
-      color: $color-white;
-      font-family: $font-heading;
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      @include link-underline-animate();
+    &-item {
+      a {
+        color: $color-white;
+        font-family: $font-heading;
+        font-size: 1.1rem;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        @include link-underline-animate();
+
+        @include mq(lg) {
+          font-size: 1.2rem;
+        }
+      }
     }
   }
 
