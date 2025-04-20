@@ -1,6 +1,7 @@
 /* _mixin.scss 汎用mixin（アニメーション、レイアウト補助）*/
 @use 'sass:math';
 @use './variables' as *;
+@use '../globals/mq' as *;
 
 // アニメーション
 @mixin animation($name, $duration: 1s, $timing-function: ease, $delay: 0s, $iteration-count: 1, $direction: normal, $fill-mode: forwards) {
@@ -99,4 +100,12 @@
   &.is-active::after {
     width: 100%;
   }
+}
+
+/// フォントサイズ用 clamp mixin
+/// @param $min - 最小サイズ（例: 1rem）
+/// @param $preferred - 推奨サイズ（例: 2vw）
+/// @param $max - 最大サイズ（例: 3rem）
+@mixin clamp-font-size($min, $preferred, $max) {
+  font-size: clamp(#{$min}, #{$preferred}, #{$max});
 }

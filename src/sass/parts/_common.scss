@@ -53,6 +53,22 @@ ul, ol {
   }
 }
 
+.sp-only {
+  display: inline;
+
+  @include mq(lg) {
+    display: none;
+  }
+}
+
+.pc-only {
+  display: none;
+
+  @include mq(lg) {
+    display: inline;
+  }
+}
+
 // ========================
 // HEADER 共通
 // ========================
