@@ -1,4 +1,4 @@
-import gsap from 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js';
+import { gsap } from 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js';
 
 export default class HeroAnimation {
   constructor() {
