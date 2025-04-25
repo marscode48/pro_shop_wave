@@ -1,4 +1,4 @@
-import { gsap } from "https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js";
+import gsap from 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js';
 
 export class GsapNewArrivals {
   constructor(swiperInstance) {
