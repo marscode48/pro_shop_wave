@@ -10,7 +10,11 @@ import { SwiperNewArrivals } from './modules/swiper-new-arrivals.js';
 import { GsapNewArrivals } from './modules/gsap-new-arrivals.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  new GsapAnimations();
+  new GsapAnimations({
+    breakpoint: 960,
+    staggerAmount: 0.2,
+    parallaxSpeed: 30,
+  });
   new ScrollHeader();
   new HeaderMenu();
   new ToggleSearch();
