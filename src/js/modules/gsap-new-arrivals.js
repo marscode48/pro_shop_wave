@@ -9,10 +9,10 @@ export class GsapNewArrivals {
   initGsap() {
     this.swiper.on('slideChangeTransitionStart', () => {
       const activeSlide = this.swiper.slides[this.swiper.activeIndex];
-      const card = activeSlide.querySelector('.card');
+      const card = activeSlide.querySelector('.card-parts');
 
       if (card) {
-        const items = card.querySelectorAll('.card__date, .card__title, .card__subtitle, .card__more-link');
+        const items = card.querySelectorAll('.card-parts__date, .card-parts__title, .card-parts__subtitle, .card-parts__more-link');
 
         // 要素ごとの順番アニメーション
         gsap.fromTo(

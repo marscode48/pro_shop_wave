@@ -153,50 +153,6 @@
 }
 
 // ========================
-// カードリスト共通
-// ========================
-.card-list {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-
-  @include mq(md) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @include mq(lg) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.card {
-  background: $color-white;
-  border: 1px solid $color-red;
-  padding: 1rem;
-  text-align: center;
-
-  &__image {
-    width: 100%;
-    height: auto;
-    margin-bottom: 1rem;
-  }
-
-  &__title {
-    font-size: 1.25rem;
-    font-family: $font-heading;
-    margin-bottom: 0.5rem;
-
-    @include mq(lg) {
-      font-size: 1.3rem;
-    }
-  }
-
-  &__text {
-    font-size: 1rem;
-  }
-}
-
-// ========================
 // HERO セクション
 // ========================
 .hero {
@@ -366,8 +322,10 @@
     background-color: $color-red;
   }
 
-  .card {
+  .card-parts {
     background: $color-dark-gray;
+    border: 1px solid $color-red;
+    padding: 1rem;
     border-radius: $radius-card;
     overflow: hidden;
     text-align: center;
