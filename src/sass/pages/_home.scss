@@ -14,6 +14,7 @@
     font-family: $font-heading;
     text-align: center;
     margin-bottom: 2rem;
+    text-transform: uppercase;
   }
 
   &__text {
@@ -23,13 +24,79 @@
   }
 
   &__button {
-    display: block;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 0 auto;
+    max-width: 240px;
+    width: 160px;
     padding: 0.7rem 1.5rem;
-    background: $color-red;
+    background-color: $color-red;
     color: $color-white;
-    border: none;
     font-family: $font-heading;
+    font-weight: bold;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    transform: skew(-20deg, 0deg);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background-color $transition, color $transition, box-shadow $transition, border $transition;
+
+    @include mq(lg) {
+      width: 200px;
+
+      &:hover {
+        background-color: $color-white;
+        color: $color-red;
+        border-color: $color-red;
+        box-shadow: 0 15px 30px rgba($color-red, 0.8);
+        animation: btn-bright-flash 0.2s linear forwards;
+      }
+    }
+
+    &-inner {
+      display: inline-block;
+      transform: skewX(15deg);
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      height: 2px;
+      background-color: $color-gray;
+      transition: transform $transition, background-color $transition;
+    }
+
+    &::before {
+      width: 35px;
+      right: -20px;
+      top: 35%;
+    }
+
+    &::after {
+      width: 20px;
+      right: -5px;
+      top: 55%;
+    }
+
+    @include mq(lg) {
+      &:hover::before,
+      &:hover::after {
+        transform: translateX(10px);
+        background-color: $color-red;
+      }
+    }
+
+    @keyframes btn-bright-flash {
+      0% {
+        filter: brightness(2.5);
+      }
+      100% {
+        filter: brightness(1.25);
+      }
+    }
   }
 
   &__flex {
@@ -44,11 +111,40 @@
     }
   }
 
-  &__image {
-    max-width: 100%;
-    height: auto;
+  &__link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  
+    @include mq(lg) {
+      flex: 0 1 45vw;
+    }
   }
+  
+  &__picture {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+    background: $color-black;
+  }
+  
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: filter $transition;
+  
+    @include mq(lg) {
+      .section__link:hover & {
 
+        filter: brightness(0.8);
+      }
+    }
+  }
+  
   &--reverse .section__flex {
     @include mq(lg) {
       flex-direction: row-reverse;
