@@ -280,34 +280,72 @@
 
     <!-- Blog Section -->
     <section class="section section--blog">
-      <h2 class="section__title">最新のチューニング情報</h2>
-      <div class="card-list">
-        <article class="card">
-          <picture>
-            <source media="(min-width: 960px)" srcset="https://placehold.jp/400x300.png?text=レビュー+PC">
-            <img src="https://placehold.jp/300x200.png?text=レビュー+SP" alt="レビュー" class="card__image">
-          </picture>
-          <h3 class="card__title">最新のレビューを見逃すな！</h3>
-          <p class="card__text">開発秘話や魅力をご紹介。</p>
-        </article>
-        <article class="card">
-          <picture>
-            <source media="(min-width: 960px)" srcset="https://placehold.jp/400x300.png?text=イベント+PC">
-            <img src="https://placehold.jp/300x200.png?text=イベント+SP" alt="イベント" class="card__image">
-          </picture>
-          <h3 class="card__title">イベントレポートをチェックしよう</h3>
-          <p class="card__text">現地の雰囲気を感じ取れるレポ。</p>
-        </article>
-        <article class="card">
-          <picture>
-            <source media="(min-width: 960px)" srcset="https://placehold.jp/400x300.png?text=新情報+PC">
-            <img src="https://placehold.jp/300x200.png?text=新情報+SP" alt="ブログ" class="card__image">
-          </picture>
-          <h3 class="card__title">新技術情報や裏話まとめ</h3>
-          <p class="card__text">マニア必見の深掘り内容も！</p>
-        </article>
+      <div class="section__inner">
+        <h2 class="section__title fadeup">Blog</h2>
+        <p class="section__text fadeup">ドリフトパーツやアパレルの<br class="sp-only">最新情報をピックアップ。</p>
+
+        <div class="card-list card-list--blog">
+          <article class="card-blog fadeup">
+            <a href="/blog/drift-wing-upgrade/" class="card-blog__link">
+              <picture class="card-blog__picture">
+                <source media="(min-width: 960px)" srcset="https://placehold.jp/500x400.png?text=DriftWing+PC">
+                <img src="https://placehold.jp/400x300.png?text=DriftWing+SP" alt="Drift Wing" class="card-blog__image">
+              </picture>
+              <div class="card-blog__content">
+                <time class="card-blog__date" datetime="2025-04-01">2025.04.01</time>
+                <h3 class="card-blog__title">ドリフトウイング強化</h3>
+                <p class="card-blog__text">リアウイングの新型パーツ登場！より高いダウンフォースを実現。</p>
+                <div class="card-blog__tags">#ドリフト #エアロ</div>
+                <div class="card-blog__more">
+                  <span class="card-blog__more-link">Read More<i class="fas fa-arrow-right"></i></span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <article class="card-blog fadeup">
+            <a href="/blog/jdm-tee-release/" class="card-blog__link">
+              <picture class="card-blog__picture">
+                <source media="(min-width: 960px)" srcset="https://placehold.jp/500x400.png?text=JDMTee+PC">
+                <img src="https://placehold.jp/400x300.png?text=JDMTee+SP" alt="JDM Tee" class="card-blog__image">
+              </picture>
+              <div class="card-blog__content">
+                <time class="card-blog__date" datetime="2025-04-10">2025.04.10</time>
+                <h3 class="card-blog__title">JDMスタイルTシャツ発売</h3>
+                <p class="card-blog__text">90’sストリートを再現したアパレルシリーズが登場。</p>
+                <div class="card-blog__tags">#アパレル #JDM</div>
+                <div class="card-blog__more">
+                  <span class="card-blog__more-link">Read More<i class="fas fa-arrow-right"></i></span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <article class="card-blog fadeup">
+            <a href="/blog/turbo-kit-install/" class="card-blog__link">
+              <picture class="card-blog__picture">
+                <source media="(min-width: 960px)" srcset="https://placehold.jp/500x400.png?text=TurboKit+PC">
+                <img src="https://placehold.jp/400x300.png?text=TurboKit+SP" alt="Turbo Kit" class="card-blog__image">
+              </picture>
+              <div class="card-blog__content">
+                <time class="card-blog__date" datetime="2025-04-15">2025.04.15</time>
+                <h3 class="card-blog__title">ターボキット装着解説</h3>
+                <p class="card-blog__text">ステップ別で解説！パワーアップを目指す方へ。</p>
+                <div class="card-blog__tags">#チューニング #ターボ</div>
+                <div class="card-blog__more">
+                  <span class="card-blog__more-link">Read More<i class="fas fa-arrow-right"></i></span>
+                </div>
+              </div>
+            </a>
+          </article>
+        </div>
+
+        <div class="section__button-area faderight">
+          <a href="/blog/" class="section__button">
+            <span class="section__button-inner">View All</span>
+          </a>
+        </div>
       </div>
-      <button class="section__button">もっと見る</button>
     </section>
 
     <!-- SNSセクション -->
