@@ -214,7 +214,7 @@
 // New Parts セクション
 // ========================
 .section--new {
-  background-color: $color-black;
+  // background-color: $color-black;
 
   .section__title {
     font-family: $font-heading;
@@ -227,6 +227,10 @@
 
   .new-arrivals-swiper {
     position: relative;
+
+    .swiper {
+      overflow: visible;
+    }
 
     .swiper-button-prev,
     .swiper-button-next {
@@ -241,6 +245,10 @@
       bottom: 0;
       margin: auto;
 
+      @include mq(lg) {
+        top: 110%;
+      }
+
       &::before {
         content: "";
         position: absolute;
@@ -249,11 +257,12 @@
         bottom: 0;
         left: 0;
         border-radius: 50%;
-        background-color: rgba($color-gray, 0.4);
+        border: 1px solid $color-red;
+        background-color: rgba($color-dark-gray, 0.6);
+        box-shadow: 0.3rem 0.3rem 1rem rgba(0, 0, 0, 0.05), -0.4rem -0.3rem 3rem $color-red;
 
         @include mq(lg) {
-          transition: $transition;
-          box-shadow: 0.3rem 0.3rem 1rem rgba(0, 0, 0, 0.05), -0.4rem -0.3rem 3rem $color-red;
+          transition: transform $transition;
         }
       }
 
@@ -273,10 +282,10 @@
     }
 
     .swiper-button-prev {
-      right: calc(100% - 6vw);
+      right: calc(100% - 7vw);
 
-      @include mq(lg) {
-        right: calc(100% + 1vw);
+      @include mq(md) {
+        right: calc(100% - 5vw);
       }
 
       &::after {
@@ -286,10 +295,10 @@
     }
 
     .swiper-button-next {
-      left: calc(100% - 6vw);
+      left: calc(100% - 7vw);
 
-      @include mq(lg) {
-        left: calc(100% + 1vw);
+      @include mq(md) {
+        left: calc(100% - 5vw);
       }
 
       &::after {
@@ -312,7 +321,7 @@
     width: 1.6rem;
     height: 2px;
     cursor: pointer;
-    transition: $transition;
+    transition: width $transition;
     vertical-align: top;
     background-color: $color-gray;
   }
@@ -323,7 +332,7 @@
   }
 
   .card-parts {
-    background: $color-dark-gray;
+    background-color: rgba($color-dark-gray, 0.6);
     border: 1px solid $color-red;
     padding: 1rem;
     border-radius: $radius-card;
@@ -333,10 +342,20 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    box-shadow: 0 0.5rem 2rem rgba($color-red, 0.5);
+    transition: box-shadow $transition;
+
+    &:hover {
+      @include mq(lg) {
+        box-shadow: 0 0.5rem 2.5rem rgba($color-red, 1);
+        transition: box-shadow $transition;
+      }
+    }
   
     &__image {
       width: 100%;
-      height: auto;
+      object-fit: cover;
+      aspect-ratio: 3 / 2;
     }
   
     &__content {
@@ -585,6 +604,6 @@
   .section {
     position: relative;
     z-index: 1;
-    background: transparent;
+    // background: transparent;
   }
 }
