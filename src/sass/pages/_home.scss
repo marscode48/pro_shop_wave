@@ -554,3 +554,37 @@
     }
   }
 }
+
+// ========================
+// セクショングループ（背景画像＋GSAPパララックス用）
+// ========================
+.section-group {
+  position: relative;
+  overflow: hidden;
+
+  .section-bg {
+
+    &__picture {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    &__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.8) blur(2px);
+    }
+  }
+
+  .section {
+    position: relative;
+    z-index: 1;
+    background: transparent;
+  }
+}
