@@ -88,15 +88,6 @@
         background-color: $color-red;
       }
     }
-
-    @keyframes btn-bright-flash {
-      0% {
-        filter: brightness(2.5);
-      }
-      100% {
-        filter: brightness(1.25);
-      }
-    }
   }
 
   &__flex {
@@ -605,5 +596,14 @@
     position: relative;
     z-index: 1;
     // background: transparent;
+  }
+}
+
+@keyframes bright-flash {
+  0% {
+    filter: brightness(2.5);
+  }
+  100% {
+    filter: brightness(1.25);
   }
 }
