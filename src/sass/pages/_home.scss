@@ -124,21 +124,31 @@
     display: block;
     overflow: hidden;
     width: 100%;
-    height: auto;
-    background: $color-black;
+    aspect-ratio: 1 / 1;
+    border-radius: $radius-image;
+    box-shadow: 0 0.5rem 1.5rem rgba($color-red, 0.6);
+    transition: box-shadow $transition;
+
+    @include mq(lg) {
+      aspect-ratio: 3 / 2;
+
+      .section__link:hover & {
+        box-shadow: 0 0.8rem 2rem rgba($color-red, 1);
+      }
+    }
   }
   
   &__image {
     width: 100%;
+    object-fit: cover;
     height: 100%;
-    object-fit: contain;
     display: block;
-    transition: filter $transition;
+    transition: transform $transition, filter $transition;
   
-    @include mq(lg) {
-      .section__link:hover & {
-
-        filter: brightness(0.8);
+    .section__link:hover & {
+      @include mq(lg) {
+        transform: scale(1.02);
+        animation: bright-flash 0.2s linear forwards;
       }
     }
   }
