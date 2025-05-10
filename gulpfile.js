@@ -64,8 +64,8 @@ function images() {
   return src(paths.images.src, { since: lastRun(images) })
     .pipe($.imagemin([
       $.imagemin.gifsicle({ interlaced: true }),
-      $.imagemin.mozjpeg({ quality: 75, progressive: true }),
-      $.imagemin.optipng({ optimizationLevel: 5 }),
+      $.imagemin.mozjpeg({ quality: 85, progressive: true }),
+      $.imagemin.optipng({ optimizationLevel: 3 }),
       $.imagemin.svgo({ plugins: [{ removeViewBox: true }, { cleanupIDs: false }] })
     ]))
     .pipe(dest(paths.images.dest)) // 通常の画像を保存
