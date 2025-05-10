@@ -36,7 +36,7 @@
     max-width: 240px;
     width: 160px;
     padding: 0.7rem 1.5rem;
-    background: linear-gradient(135deg, lighten($color-red, 15%) 0%, darken($color-red, 15%) 100%);
+    background: linear-gradient(135deg, color.adjust($color-red, $lightness: 15%) 0%, color.adjust($color-red, $lightness: -15%) 100%);
     color: $color-white;
     font-family: $font-heading;
     font-weight: bold;
@@ -54,7 +54,7 @@
 
     &:hover {
       @include mq(lg) {
-        background: linear-gradient(135deg, lighten($color-white, 15%) 70%, lighten($color-red, 5%) 100%);
+        background: linear-gradient(135deg, color.adjust($color-white, $lightness: 15%) 70%, color.adjust($color-red, $lightness: 5%) 100%);
         color: $color-red;
         border-color: $color-red;
         box-shadow: 0 0.5rem 2.5rem rgba($color-red, 1);
