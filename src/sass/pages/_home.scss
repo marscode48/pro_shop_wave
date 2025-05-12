@@ -458,7 +458,8 @@
   }
 
   .card-blog {
-    background: $color-white;
+    position: relative;
+    overflow: hidden;
     border: 1px solid $color-red;
     border-radius: $radius-card;
     padding: 1.5rem;
@@ -466,9 +467,30 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    box-shadow: $box-shadow-red-default;
     transition: box-shadow $transition;
-    position: relative;
-    overflow: hidden;
+
+    &:hover {
+      @include mq(lg) {
+        box-shadow: $box-shadow-red-hover;
+      }
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("../../images/bg_blog_card_sp.webp");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.8;
+      z-index: -1;
+    
+      @include mq(lg) {
+        background-image: url("../../images/bg_blog_card_pc.webp");
+      }
+    }
   
     &__link {
       display: block;
@@ -476,12 +498,12 @@
       text-decoration: none;
       height: 100%;
 
-      @include mq(lg) {
-        &:hover {
+      &:hover {
+        @include mq(lg) {
           // aリンク全体のhoverで画像アニメーション
           .card-blog__image {
             transform: scale(1.05);
-            filter: brightness(0.8);
+            filter: brightness(1.2);
           }
 
           // aリンク全体のhoverでmoreアニメーション
@@ -503,7 +525,7 @@
       display: block;
       overflow: hidden;
       width: 100%;
-      aspect-ratio: 3/2;
+      aspect-ratio: 3 / 2;
       margin-bottom: 1rem;
       border-radius: 0.5rem;
     }
@@ -536,6 +558,7 @@
     &__title {
       font-size: 1.25rem;
       font-family: $font-heading;
+      color: $color-white;
       margin-bottom: 0.5rem;
       white-space: nowrap;
       overflow: hidden;
@@ -548,6 +571,7 @@
   
     &__text {
       font-size: 1rem;
+      color: $color-white;
       margin-bottom: 1.2rem;
       display: -webkit-box;
       -webkit-line-clamp: 3;
