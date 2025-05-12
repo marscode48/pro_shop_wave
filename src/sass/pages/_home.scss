@@ -363,6 +363,7 @@
       width: 100%;
       object-fit: cover;
       aspect-ratio: 3 / 2;
+      border-radius: $radius-image;
     }
   
     &__content {
