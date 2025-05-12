@@ -607,6 +607,33 @@
 }
 
 // ========================
+// SNS セクション
+// ========================
+.section--sns {
+  background-image: url('../images/bg_sns_section_sp.webp');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+
+  @include mq(lg) {
+    background-image: url('../images/bg_sns_section_pc.webp');
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba($color-black, 0.3);
+    z-index: 0;
+  }
+
+  .sns__widget {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+// ========================
 // セクショングループ（背景画像＋GSAPパララックス用）
 // ========================
 .section-group {
