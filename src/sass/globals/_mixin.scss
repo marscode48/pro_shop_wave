@@ -80,7 +80,7 @@
 }
 
 // 下線アニメーションのmixin
-@mixin link-underline-animate($color: $color-red, $height: 2px, $duration: 0.3s) {
+@mixin link-underline-animate($color: $color-red, $height: 2px, $duration: 0.2s) {
   position: relative;
   text-decoration: none;
   display: inline-block;
@@ -93,7 +93,7 @@
     width: 0%;
     height: $height;
     background-color: $color;
-    transition: width $duration ease;
+    transition: width $duration ease-out;
   }
 
   &:hover::after,
