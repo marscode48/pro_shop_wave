@@ -44,7 +44,7 @@
     text-transform: uppercase;
     transform: skew(-20deg, 0deg);
     border: 1px solid $color-black;
-    box-shadow: 0 0.5rem 2rem rgba($color-red, 0.5);
+    box-shadow: $box-shadow-red-default;
     cursor: pointer;
     transition: background-color $transition, color $transition, box-shadow $transition, border $transition;
 
@@ -57,7 +57,7 @@
         background: linear-gradient(135deg, color.adjust($color-white, $lightness: 15%) 70%, color.adjust($color-red, $lightness: 5%) 100%);
         color: $color-red;
         border-color: $color-red;
-        box-shadow: 0 0.5rem 2.5rem rgba($color-red, 1);
+        box-shadow: $box-shadow-red-hover;
         animation: bright-flash 0.2s linear forwards;
       }
     }
@@ -126,14 +126,14 @@
     width: 100%;
     aspect-ratio: 1 / 1;
     border-radius: $radius-image;
-    box-shadow: 0 0.5rem 1.5rem rgba($color-red, 0.6);
+    box-shadow: $box-shadow-red-default;
     transition: box-shadow $transition;
 
     @include mq(lg) {
       aspect-ratio: 3 / 2;
 
       .section__link:hover & {
-        box-shadow: 0 0.8rem 2rem rgba($color-red, 1);
+        box-shadow: $box-shadow-red-hover;
       }
     }
   }
@@ -350,13 +350,12 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    box-shadow: 0 0.5rem 2rem rgba($color-red, 0.5);
+    box-shadow: $box-shadow-red-default;
     transition: box-shadow $transition;
 
     &:hover {
       @include mq(lg) {
-        box-shadow: 0 0.5rem 2.5rem rgba($color-red, 1);
-        transition: box-shadow $transition;
+        box-shadow: $box-shadow-red-hover;
       }
     }
   
