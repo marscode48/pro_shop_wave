@@ -8,7 +8,7 @@
 body {
   font-family: $font-body;
   color: $color-black;
-  background-color: $color-white;
+  background-color: $color-black;
 }
 
 img {
@@ -498,15 +498,32 @@ ul, ol {
 // FOOTER 共通
 // ========================
 .footer {
-  background: $color-black;
+  position: relative;
+  background-image: url('../../images/bg_footer_sp.webp');
+  background-size: cover;
+  background-position: center;
   color: $color-white;
   padding: 3rem 5vw;
   font-size: 0.9rem;
+
+  @include mq(lg) {
+    background-image: url('../../images/bg_footer_pc.webp');
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba($color-red, 0.3) 0%, rgba($color-black, 0.6) 20%);
+    z-index: 0;
+  }
 
   &__inner {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    position: relative;
+    z-index: 1;
     text-align: center;
 
     @include mq(lg) {
