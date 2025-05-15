@@ -8,6 +8,7 @@ import { ToggleSearch } from './modules/toggle-search.js';
 import HeroAnimation from './modules/HeroAnimation.js';
 import { SwiperNewArrivals } from './modules/swiper-new-arrivals.js';
 import { GsapNewArrivals } from './modules/gsap-new-arrivals.js';
+import { VivusLogo } from './modules/vivus-logo.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   new GsapAnimations({
@@ -21,4 +22,5 @@ document.addEventListener('DOMContentLoaded', () => {
   // new HeroAnimation();
   const swiper = new SwiperNewArrivals();
   new GsapNewArrivals(swiper.instance);
+  new VivusLogo();
 });

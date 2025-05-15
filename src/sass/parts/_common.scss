@@ -69,6 +69,22 @@ ul, ol {
   }
 }
 
+.vivus-logo {
+  fill-opacity: 0;
+  stroke-opacity: 1;
+  stroke: $color-white;
+  fill: $color-white;
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: fill-opacity 1s, stroke-opacity .5s;
+
+  &.vivus-finished {
+    fill-opacity: 1;
+    stroke-opacity: 0;
+  }
+}
+
 // ========================
 // HEADER 共通
 // ========================
@@ -544,15 +560,14 @@ ul, ol {
   }
 
   .footer__brand {
-    img {
-      width: 180px;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-  
-      @include mq(lg) {
-        margin: 0;
-      }
+    width: 260px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+
+    @include mq(lg) {
+      width: 320px;
+      margin: 0;
     }
   }
 
