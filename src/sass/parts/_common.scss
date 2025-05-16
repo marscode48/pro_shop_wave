@@ -170,22 +170,26 @@ ul, ol {
   }
 
   &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 100%;
-    font-family: $font-heading;
-    font-size: 1.2rem;
-    text-align: center;
-
+    width: 180px;
+  
     @include mq(lg) {
-      text-align: left;
+      width: 220px;
+      justify-content: flex-start;
     }
-
-    img {
-      height: 100%;
-    }
-
+  
     a {
+      display: inline-block;
       text-decoration: none;
-      color: $color-white;
+  
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
     }
   }
 
