@@ -563,7 +563,7 @@ ul, ol {
     }
   }
 
-  .footer__brand {
+  &__brand {
     width: 260px;
     height: auto;
     display: block;
@@ -631,6 +631,7 @@ ul, ol {
 
         &:first-child {
           font-size: 1rem;
+          font-family: $font-heading;
         }
       }
   
