@@ -3,6 +3,7 @@ import { GsapAnimations } from './modules/gsap-animations.js';
 import { ScrollHeader } from './modules/scroll-header.js';
 import { HeaderMenu } from './modules/HeaderMenu.js';
 import { ToggleSearch } from './modules/toggle-search.js';
+import { SmoothScrollToTop } from './modules/smooth-scroll-to-top.js';
 
 // 特定ページ専用や個別機能（ページ単位のもの）
 import HeroAnimation from './modules/HeroAnimation.js';
@@ -23,4 +24,5 @@ document.addEventListener('DOMContentLoaded', () => {
   const swiper = new SwiperNewArrivals();
   new GsapNewArrivals(swiper.instance);
   new VivusLogo();
+  new SmoothScrollToTop();
 });
