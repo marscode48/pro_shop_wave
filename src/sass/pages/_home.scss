@@ -167,6 +167,55 @@
   height: calc(100vh - $header-height);
   position: relative;
 
+
+  &-swiper {
+
+    .hero-slide {
+      height: 100%;
+    }
+
+    // Swiperフェードモード時の基本挙動
+    &.swiper-fade {
+      .swiper-slide {
+        transition-property: opacity, transform;
+        pointer-events: none;
+
+        &.swiper-slide[class*=-active] {
+          pointer-events: auto;
+        }
+      }
+    }
+
+    // 画像ズーム演出
+    .slide-media img {
+      transition: 7s 1s ease-out;
+    }
+
+    .swiper-slide[class*=-active] .slide-media img {
+      transition-delay: 0s;
+      transform: scale(1.2);
+    }
+
+    // コンテンツアニメーション
+    .swiper-slide[class*=-active] .hero__content {
+      animation: hero-fadeIn 2s 0.5s cubic-bezier(.2, 1, .2, 1) both;
+    }
+
+    // コンテンツ表示アニメーション定義
+    @keyframes hero-fadeIn {
+      0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0;
+        filter: blur(300px);
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+        filter: blur(0);
+      }
+    }
+  }
+
   &__image {
     width: 100%;
     height: 100%;
