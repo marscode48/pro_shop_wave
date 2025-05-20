@@ -163,6 +163,116 @@
 // ========================
 // HERO セクション
 // ========================
+
+  // .hero-swiper .content {
+  //   position: absolute;
+  //   z-index: 2;
+  //   top: 0;
+  //   bottom: 0;
+  //   height: max-content;
+  //   margin: auto;
+  //   pointer-events: none;
+  // }
+  // .hero-swiper .content {
+  //   position: absolute;
+  //   z-index: 2;
+  //   top: 0;
+  //   bottom: 0;
+  //   height: max-content;
+  //   margin: auto;
+  //   pointer-events: none;
+  // }
+
+  // .hero-swiper .content-title {
+  //   font-size: 6rem;
+  //   line-height: 1.1;
+  //   color: $color-white;
+  // }
+  // .hero-swiper .content-text {
+  //   font-size: 1.8rem;
+  //   margin: 4rem 0;
+  //   color: $color-white;
+  // }
+  // .hero-swiper .content.anm-started {
+  //   pointer-events: auto;
+  // }
+  // .hero-swiper .marker {
+  //   position: relative;
+  //   display: inline-block;
+  //   clip-path: inset(0 100% 0 0);
+  // }
+  // .hero-swiper .marker::after {
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 100%;
+  //   content: "";
+  //   // background-color: $color-red;
+  //   background: linear-gradient(135deg, color.adjust($color-red, $lightness: 15%) 0%, color.adjust($color-red, $lightness: -15%) 100%);
+  // }
+  // .hero-swiper .anm-started .marker {
+  //   animation: hero-marker 1s 0.5s both;
+  // }
+  // .hero-swiper .anm-started .marker::after {
+  //   animation: hero-marker-bg 1s 0.5s both;
+  // }
+  // .hero-swiper .anm-started .content-text .marker,
+  // .hero-swiper .anm-started .content-text .marker::after {
+  //   animation-delay: 0.6s;
+  // }
+  // .hero-swiper .anm-finished .marker {
+  //   animation: hero-marker-hide 0.5s both;
+  // }
+  // .hero-swiper .anm-finished .marker::after {
+  //   clip-path: inset(0 0 0 100%);
+  // }
+
+  // @keyframes hero-marker {
+  //   60%, 100% {
+  //     clip-path: inset(0);
+  //   }
+  // }
+
+  // @keyframes hero-marker-bg {
+  //   60% {
+  //     clip-path: inset(0);
+  //   }
+  //   100% {
+  //     clip-path: inset(0 0 0 100%);
+  //   }
+  // }
+  // @keyframes hero-marker-hide {
+  //   0% {
+  //     clip-path: inset(0);
+  //   }
+  //   100% {
+  //     clip-path: inset(0 0 0 100%);
+  //   }
+  // }
+
+  // @media only screen and (max-width: 1024px) {
+  //   .hero-swiper .content {
+  //     top: calc(20% + 6rem);
+  //     right: 6rem;
+  //     bottom: auto;
+  //     left: 6rem;
+  //   }
+  //   .hero-swiper .content-title {
+  //     font-size: 3.2rem;
+  //   }
+  //   .hero-swiper .content-text {
+  //     font-size: 1.6rem;
+  //     margin: 2.4rem 0;
+  //   }
+  // }
+
+  // @media only screen and (min-width: 1025px) {
+  //   .hero-swiper .content {
+  //     left: 12vw;
+  //   }
+  // }
+
 .hero {
   height: calc(100vh - $header-height);
   position: relative;
@@ -197,12 +307,45 @@
     }
 
     // コンテンツアニメーション
-    .swiper-slide[class*=-active] .hero__content {
-      animation: hero-fadeIn 2s 0.5s cubic-bezier(.2, 1, .2, 1) both;
+    // .swiper-slide[class*=-active] .hero__content {
+    //   animation: hero-fade-in 2s 0.5s cubic-bezier(.2, 1, .2, 1) both;
+    // }
+
+    // Marker animation for hero content
+    .marker {
+      position: relative;
+      display: inline-block;
+      clip-path: inset(0 100% 0 0);
+      overflow: hidden;
+    }
+
+    .marker::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, color.adjust($color-red, $lightness: 15%) 0%, color.adjust($color-red, $lightness: -15%) 100%);
+      clip-path: inset(0);
+      z-index: -1;
+    }
+
+    .swiper-slide-active .marker {
+      animation: hero-marker-reveal 1s ease-out forwards;
+    }
+
+    @keyframes hero-marker-reveal {
+      0% {
+        clip-path: inset(0 100% 0 0);
+      }
+      100% {
+        clip-path: inset(0);
+      }
     }
 
     // コンテンツ表示アニメーション定義
-    @keyframes hero-fadeIn {
+    @keyframes hero-fade-in {
       0% {
         transform: translate(-50%, -50%) scale(0.5);
         opacity: 0;
@@ -235,6 +378,34 @@
     width: 90%;
     max-width: 900px;
     margin: 0 auto;
+
+
+    // hero-word animation styling
+    .hero-word {
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+      line-height: 1;
+      font-size: 4rem;
+      font-weight: 900;
+    }
+
+    .hero-word__mask {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-color: $color-white;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .hero-word__text {
+      position: relative;
+      z-index: 2;
+      display: inline-block;
+    }
+
   }
 
 
