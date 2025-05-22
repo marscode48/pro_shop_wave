@@ -119,51 +119,50 @@ ul, ol {
     width: 30px;
     height: 24px;
     position: relative;
-    cursor: pointer;
     background: none;
     border: none;
-    cursor: pointer;
     padding: 0;
     z-index: 100;
-
+    cursor: pointer;
+  
     span {
       position: absolute;
       height: 2px;
-      width: 100%;
-      background-color: $color-white;
+      background-color: $color-red;
       left: 0;
       border-radius: 2px;
-      transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
-
+      transition: transform 0.3s ease, width 0.3s ease, top 0.3s ease;
+  
       &:nth-child(1) {
         top: 0;
+        width: 100%;
       }
+  
       &:nth-child(2) {
         top: 10px;
+        width: 60%;
       }
+  
       &:nth-child(3) {
-        top: 20px;
+        display: none;
       }
     }
-    
+  
     &.is-open {
       span {
-        background-color: $color-red;
-
         &:nth-child(1) {
           top: 10px;
           transform: rotate(45deg);
         }
+  
         &:nth-child(2) {
-          opacity: 0;
-        }
-        &:nth-child(3) {
           top: 10px;
+          width: 100%;
           transform: rotate(-45deg);
         }
       }
     }
-
+  
     @include mq(lg) {
       display: none;
     }
