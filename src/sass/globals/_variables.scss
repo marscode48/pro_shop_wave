@@ -22,3 +22,6 @@ $transition: $duration ease;
 // Box shadows
 $box-shadow-red-default: 0 0.5rem 2rem rgba($color-red, 0.6);
 $box-shadow-red-hover: 0 0.5rem 2.5rem rgba($color-red, 1);
+
+// Text shadows
+$text-shadow-black-default: 2px 3px 3px rgba($color-black, 0.6);

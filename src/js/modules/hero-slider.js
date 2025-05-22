@@ -7,41 +7,76 @@ export class HeroSlider {
   }
   
   initSwiper() {
+    const markerDelay = 0.3;
+    const initialDelay = 1;
+    const activateHeroMarker = (heroContentEl) => {
+      if (!heroContentEl) return;
+      heroContentEl.classList.remove('is-marker-completed');
+      heroContentEl.classList.add('is-marker-active');
 
-    // Reset styles for all .hero-word and .hero-word__mask in a slide
-    function resetHeroWords(slide) {
-      const heroWords = slide.querySelectorAll('.hero-word');
-      heroWords.forEach((word) => {
-        gsap.set(word, { opacity: 0 });
-        const mask = word.querySelector('.hero-word__mask');
-        if (mask) {
-          gsap.set(mask, { opacity: 0 });
-        }
-        gsap.set(word, { clearProps: 'all' });
-        gsap.set(mask, { clearProps: 'all' });
-      });
+      const markers = heroContentEl.querySelectorAll('.hero__text-marker');
+      const subheading = heroContentEl.querySelector('.hero__subheading-jp');
+      // マーカーのアニメーション関連のインラインスタイルを設定
+      if (markers.length > 0) {
+        const duration = markerDelay * markers.length + markerDelay + initialDelay;
+        markers.forEach((marker, index) => {
+          const delay = markerDelay * index + markerDelay;
+          marker.style.setProperty('animation-delay', `${delay}s`);
+          marker.style.setProperty('animation-duration', `${duration}s`);
+          marker.style.setProperty('--marker-animation-duration', `${duration}s`); // ::after用
+        });
+      }
+      // マーカーのアニメーション後にサブヘディングをGSAPでアニメーション
+      if (subheading) {
+        const delay = markerDelay * markers.length + markerDelay;
+        gsap.fromTo(subheading,
+          { scale: 0.5, opacity: 0, filter: 'blur(300px)' },
+          {
+            scale: 1,
+            opacity: 1,
+            filter: 'blur(0px)',
+            duration: 1,
+            delay,
+            ease: 'power2.out'
+          }
+        );
+      }
     }
 
-    function createChildTimeline(element) {
-      const elMask = element.querySelector('.hero-word__mask');
-      const tl = gsap.timeline({ delay: 1 })
-        .from(element, {
-          y: 16,
-          opacity: 0,
-          duration: 0.75,
-          ease: 'power4.out',
-        })
-        .set(elMask, { opacity: 0 })
-        .to(
-          elMask,
-          {
-            x: '105%',
-            duration: 1,
-            ease: 'power4.out',
-          },
-          '-=50%'
-        );
-      return tl;
+    const deactivateHeroMarker = () => {
+      const heroContentEl = document.querySelector('.hero-swiper .hero__content.is-marker-active');
+      if (heroContentEl) {
+        // クラスを切り替える前に、マーカーのアニメーション関連のインラインスタイルを削除
+        const markers = heroContentEl.querySelectorAll('.hero__text-marker');
+        markers.forEach((marker) => {
+          marker.style.removeProperty('animation-delay');
+          marker.style.removeProperty('animation-duration');
+          marker.style.removeProperty('--marker-animation-duration');
+        });
+
+        heroContentEl.classList.remove('is-marker-active');
+        heroContentEl.classList.add('is-marker-completed');
+
+        // サブヘディングをGSAPでアニメーションでフェードアウト
+        const subheading = heroContentEl.querySelector('.hero__subheading-jp');
+        if (subheading) {
+          gsap.to(subheading, {
+            scale: 0.25,
+            opacity: 0,
+            y: 20,
+            duration: 0.8,
+            ease: 'power2.out',
+            // アニメーション完了後にスタイルをリセット
+            onComplete: () => {
+              gsap.set(subheading, {
+                scale: 0.5,
+                y: 0,
+                clearProps: 'transform'
+              });
+            }
+          });
+        }
+      }
     }
 
     const swiper = new Swiper('.hero-swiper', {
@@ -50,62 +85,24 @@ export class HeroSlider {
         crossFade: true,
       },
       loop: true,
-      loopAdditionalSlides: 1,
       speed: 3000,
-      // autoplay: {
-      //   delay: 5000,
-      //   disableOnInteraction: false,
-      //   waitForTransition: false,
-      // },
-      followFinger: false,
-      observeParents: true, // Swiperの親要素も監視する
-      pagination: {
-        el: '.hero .swiper-pagination',
-        clickable: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+        waitForTransition: false,
       },
-
+      followFinger: false,
       on: {
-        init: function () {
-          console.log('swiper initialized');
-          const activeSlide = document.querySelector('.hero-swiper .swiper-slide-active');
-          const heroWords = activeSlide.querySelectorAll('.hero-word');
-          if (heroWords.length > 0) {
-            const tl = gsap.timeline();
-            heroWords.forEach((heroWord) => {
-              tl.add(createChildTimeline(heroWord), '-=90%');
-            });
-          }
+        init: () => {
+          const heroContentEl = document.querySelector('.hero-swiper .swiper-slide-active .hero__content');
+          activateHeroMarker(heroContentEl);
         },
-        // スライドが切り替わり「始まったとき」に呼ばれます（アニメーション中）。
-        // 前のスライドのクラス・状態をリセットしたいとき。
+        slideChange: () => {
+          deactivateHeroMarker();
+        },
         slideChangeTransitionStart: () => {
-          console.log('slideChangeTransitionStart is called');
-          const slides = document.querySelectorAll('.hero-swiper .swiper-slide');
-          slides.forEach(slide => {
-            slide.querySelector('.hero__heading-en')?.classList.remove('animated');
-            slide.querySelector('.hero__subheading-jp')?.classList.remove('animated');
-            resetHeroWords(slide);
-          });
-        },
-        // スライドが切り替わる「アニメーションが終わったあと」に呼ばれます。
-        // 新しいスライドの要素に対して GSAP アニメーションを開始。
-        slideChangeTransitionEnd: () => {
-          console.log('slideChangeTransitionStop is called');
-          const activeSlide = document.querySelector('.hero-swiper .swiper-slide-active');
-          const heading = activeSlide.querySelector('.hero__heading-en');
-          const subheading = activeSlide.querySelector('.hero__subheading-jp');
-
-          if (heading && subheading) {
-            const heroWords = activeSlide.querySelectorAll('.hero-word');
-            if (heroWords.length > 0) {
-              const tl = gsap.timeline();
-
-              heroWords.forEach((heroWord) => {
-                tl.add(createChildTimeline(heroWord), '-=90%');
-              });
-            }
-          }
-
+          const heroContentEl = document.querySelector('.hero-swiper .swiper-slide-active .hero__content');
+          activateHeroMarker(heroContentEl);
         }
       }
     });
