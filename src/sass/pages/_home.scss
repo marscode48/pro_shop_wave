@@ -16,7 +16,7 @@
     color: $color-white;
     margin-bottom: 2rem;
     text-transform: uppercase;
-    text-shadow: 2px 3px 3px rgba($color-black, 0.6);
+    text-shadow: $text-shadow-black-default;
   }
 
   &__text {
@@ -24,7 +24,7 @@
     font-size: 1rem;
     color: $color-white;
     margin-bottom: 2rem;
-    text-shadow: 2px 3px 3px rgba($color-black, 0.6);
+    text-shadow: $text-shadow-black-default;
   }
 
   &__button {
@@ -163,21 +163,24 @@
 // ========================
 // HERO セクション
 // ========================
+$marker-anim-name: hero__text-marker-anim;
+$marker-bg-anim-name: hero__text-marker-bg;
+$marker-hide-anim-name: hero__text-marker-hide;
+$marker-anim-duration: var(--marker-animation-duration);
+
 .hero {
   height: calc(100vh - $header-height);
   position: relative;
 
-
   &-swiper {
-
     .hero-slide {
       height: 100%;
     }
 
-    // Swiperフェードモード時の基本挙動
+    // Swiper フェードモード：画像遷移にフェードを適用
     &.swiper-fade {
       .swiper-slide {
-        transition-property: opacity, transform;
+        transition-property: opacity, transform !important;
         pointer-events: none;
 
         &.swiper-slide[class*=-active] {
@@ -186,32 +189,63 @@
       }
     }
 
-    // 画像ズーム演出
+    // 画像ズームアニメーション（アクティブ時）
     .slide-media img {
       transition: 7s 1s ease-out;
     }
-
     .swiper-slide[class*=-active] .slide-media img {
       transition-delay: 0s;
       transform: scale(1.2);
     }
 
-    // コンテンツアニメーション
-    .swiper-slide[class*=-active] .hero__content {
-      animation: hero-fadeIn 2s 0.5s cubic-bezier(.2, 1, .2, 1) both;
+    // ========================
+    // マーカーアニメーション共通
+    // ========================
+    .hero__text-marker {
+      position: relative;
+      display: inline-block;
+      clip-path: inset(0 100% 0 0);
+      animation-delay: inherit; // JSで設定したdelayを継承
+
+      &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        content: "";
+        background: linear-gradient(
+          135deg,
+          color.adjust($color-red, $lightness: 15%) 0%,
+          color.adjust($color-red, $lightness: -30%) 100%
+        );
+        animation-delay: inherit;
+      }
     }
 
-    // コンテンツ表示アニメーション定義
-    @keyframes hero-fadeIn {
-      0% {
-        transform: translate(-50%, -50%) scale(0.5);
-        opacity: 0;
-        filter: blur(300px);
+    // ========================
+    // マーカーアニメーション：開始
+    // ========================
+    .is-marker-active {
+      .hero__text-marker {
+        animation: #{$marker-anim-name} #{$marker-anim-duration} both;
+
+        &::after {
+          animation: #{$marker-bg-anim-name} #{$marker-anim-duration} both;
+        }
       }
-      100% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
-        filter: blur(0);
+    }
+
+    // ========================
+    // マーカーアニメーション：終了時の非表示
+    // ========================
+    .is-marker-completed {
+      .hero__text-marker {
+        animation: #{$marker-hide-anim-name} 0.8s both;
+
+        &::after {
+          clip-path: inset(0 0 0 100%);
+        }
       }
     }
   }
@@ -225,31 +259,29 @@
 
   &__content {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 5vw;
     color: $color-white;
-    background-color: rgba(0, 0, 0, 0.4);
-    text-align: center;
-    padding: 1.5rem;
-    width: 90%;
-    max-width: 900px;
-    margin: 0 auto;
+    height: max-content;
+    margin: auto;
+    pointer-events: none;
   }
-
 
   &__heading-en {
     @include clamp-font-size(2rem, 5vw, 4rem);
     font-family: $font-heading;
     font-weight: 700;
-    text-align: center;
+    text-align: left;
+    text-shadow: $text-shadow-black-default;
+  }
 
-    & .highlight-jdm {
-      color: $color-red;
-      font-weight: 700;
-      letter-spacing: 0.05em;    
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
-    }
+  &__highlight {
+    color: $color-red;
+    font-weight: 700;
+    letter-spacing: 0.06em;
   }
 
   &__subheading-jp {
@@ -257,13 +289,41 @@
     font-family: $font-body;
     font-weight: 400;
     line-height: 1.8;
-    color: $color-gray;
+    color: $color-white;
     text-align: center;
+    text-shadow: $text-shadow-black-default;
     margin-top: 1.2rem;
 
     @include mq(lg) {
       margin-top: 1.5rem;
     }
+  }
+}
+
+// ========================
+// キーフレーム定義
+// ========================
+@keyframes hero__text-marker-anim {
+  60%, 100% {
+    clip-path: inset(0);
+  }
+}
+
+@keyframes hero__text-marker-bg {
+  60% {
+    clip-path: inset(0);
+  }
+  100% {
+    clip-path: inset(0 0 0 100%);
+  }
+}
+
+@keyframes hero__text-marker-hide {
+  0% {
+    clip-path: inset(0);
+  }
+  100% {
+    clip-path: inset(0 0 0 100%);
   }
 }
 

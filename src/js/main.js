@@ -7,6 +7,7 @@ import { SmoothScrollToTop } from './modules/smooth-scroll-to-top.js';
 
 // 特定ページ専用や個別機能（ページ単位のもの）
 import HeroAnimation from './modules/HeroAnimation.js';
+import { HeroSlider } from './modules/hero-slider.js';
 import { SwiperNewArrivals } from './modules/swiper-new-arrivals.js';
 import { GsapNewArrivals } from './modules/gsap-new-arrivals.js';
 import { VivusLogo } from './modules/vivus-logo.js';
@@ -21,8 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
   new HeaderMenu();
   new ToggleSearch();
   // new HeroAnimation();
+  new HeroSlider();
   const swiper = new SwiperNewArrivals();
   new GsapNewArrivals(swiper.instance);
   new VivusLogo();
   new SmoothScrollToTop();
+
+  
 });
