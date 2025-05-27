@@ -310,6 +310,12 @@ ul, ol {
         display: none; // PCでは表示しない
       }
     }
+
+    .header__logo {
+      @include mq(lg) {
+        display: none; // PCでは表示しない
+      }
+    }
   }
 
   &__utils {
