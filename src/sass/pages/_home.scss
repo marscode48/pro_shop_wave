@@ -271,7 +271,7 @@ $marker-anim-duration: var(--marker-animation-duration);
   }
 
   &__heading-en {
-    @include clamp-font-size(2rem, 5vw, 4rem);
+    @include clamp-font-size(2rem, 4vw, 5rem);
     font-family: $font-heading;
     font-weight: 700;
     text-align: left;
@@ -292,10 +292,18 @@ $marker-anim-duration: var(--marker-animation-duration);
     color: $color-white;
     text-align: center;
     text-shadow: $text-shadow-black-default;
-    margin-top: 1.2rem;
+    margin-top: 40vh;
 
     @include mq(lg) {
-      margin-top: 1.5rem;
+      margin-top: 30vh;
+    }
+    
+    @include mq(xl) {
+      margin-top: 35vh;
+    }
+    
+    @include mq(xxl) {
+      margin-top: 45vh;
     }
   }
 }
