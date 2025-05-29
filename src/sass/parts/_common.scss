@@ -4,6 +4,7 @@
 @use '../globals/variables' as *;
 @use '../globals/mixin' as *;
 @use '../globals/mq' as *;
+@use 'sass:color';
 
 body {
   font-family: $font-body;
@@ -128,7 +129,7 @@ ul, ol {
     span {
       position: absolute;
       height: 2px;
-      background-color: lighten($color-red, 10%);
+      background-color: color.adjust($color-red, $lightness: 10%);
       left: 0;
       border-radius: 2px;
       transition: transform 0.3s ease, width 0.3s ease, top 0.3s ease;
