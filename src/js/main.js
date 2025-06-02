@@ -29,6 +29,7 @@ class Main {
     });
     new HeaderMenu();
     new ToggleSearch();
+    new SmoothScrollToTop();
   }
 
   #scrollInit() {
