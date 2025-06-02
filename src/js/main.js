@@ -27,6 +27,7 @@ class Main {
       staggerAmount: 0.2,
       parallaxSpeed: 30,
     });
+    new HeaderMenu();
   }
 
   #scrollInit() {
