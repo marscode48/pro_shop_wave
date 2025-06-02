@@ -15,6 +15,8 @@ import { VivusLogo } from './modules/vivus-logo.js';
 class Main {
   constructor() {
     this.header = document.querySelector('.header');
+    this.hero = new HeroSlider('.swiper.hero-swiper');
+    this.heroDelay = 3000;
     this.#init();
   }
 
@@ -24,6 +26,19 @@ class Main {
 
   #scrollInit() {
     new ScrollObserver('.nav-trigger', this.#navAnimation.bind(this), { once: false });
+    new ScrollObserver('.swiper.hero-swiper', this.#toggleHeroAnimation.bind(this), { once: false });
+  }
+
+  #toggleHeroAnimation(el, inview) {
+    if (inview) {
+      this.hero.start({ delay: this.heroDelay });
+      console.log('hero-slider start is called');
+    } else {
+      this.hero.stop();
+      console.log('hero-slider stop is called');
+    }
+  }
+
   #navAnimation(el, inview) {
     if (inview) {
       console.log(el, inview);
