@@ -22,6 +22,11 @@ class Main {
 
   #init() {
     Pace.on('done', this.#scrollInit.bind(this));
+    new GsapAnimations({
+      breakpoint: 960,
+      staggerAmount: 0.2,
+      parallaxSpeed: 30,
+    });
   }
 
   #scrollInit() {
