@@ -28,6 +28,7 @@ class Main {
       parallaxSpeed: 30,
     });
     new HeaderMenu();
+    new ToggleSearch();
   }
 
   #scrollInit() {
@@ -47,7 +48,6 @@ class Main {
 
   #navAnimation(el, inview) {
     if (inview) {
-      console.log(el, inview);
       this.header.classList.remove('is-scrolled');
     } else {
       this.header.classList.add('is-scrolled');
@@ -56,20 +56,12 @@ class Main {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  new GsapAnimations({
-    breakpoint: 960,
-    staggerAmount: 0.2,
-    parallaxSpeed: 30,
-  });
-  new ScrollHeader();
-  new HeaderMenu();
-  new ToggleSearch();
-  // new HeroAnimation();
-  new HeroSlider();
-  const swiper = new SwiperNewArrivals();
-  new GsapNewArrivals(swiper.instance);
-  new VivusLogo();
-  new SmoothScrollToTop();
-
-  
+  const main = new Main();
+  // new ToggleSearch();
+  // // new HeroAnimation();
+  // new HeroSlider();
+  // const swiper = new SwiperNewArrivals();
+  // new GsapNewArrivals(swiper.instance);
+  // new VivusLogo();
+  // new SmoothScrollToTop();
 });
