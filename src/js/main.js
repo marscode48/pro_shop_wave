@@ -30,6 +30,8 @@ class Main {
     new HeaderMenu();
     new ToggleSearch();
     new SmoothScrollToTop();
+    this.swiperNewArrivals = new SwiperNewArrivals();
+    this.gsapNewArrivals = new GsapNewArrivals(this.swiperNewArrivals.instance);
   }
 
   #scrollInit() {
