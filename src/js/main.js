@@ -1,4 +1,5 @@
 // 共通機能（グローバルに影響するもの）を先に
+import { ScrollObserver } from './modules/scroll-observer.js';
 import { GsapAnimations } from './modules/gsap-animations.js';
 import { ScrollHeader } from './modules/scroll-header.js';
 import { HeaderMenu } from './modules/HeaderMenu.js';
@@ -11,6 +12,19 @@ import { HeroSlider } from './modules/hero-slider.js';
 import { SwiperNewArrivals } from './modules/swiper-new-arrivals.js';
 import { GsapNewArrivals } from './modules/gsap-new-arrivals.js';
 import { VivusLogo } from './modules/vivus-logo.js';
+
+class Main {
+  constructor() {
+    this.#init();
+  }
+
+  #init() {
+    Pace.on('done', this.#scrollInit.bind(this));
+  }
+
+  #scrollInit() {
+  }
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   new GsapAnimations({
