@@ -34,11 +34,13 @@ class Main {
     new SmoothScrollToTop();
     this.swiperNewArrivals = new SwiperNewArrivals();
     this.gsapNewArrivals = new GsapNewArrivals(this.swiperNewArrivals.instance);
+    this.vivusLogo = new VivusLogo();
   }
 
   #scrollInit() {
     new ScrollObserver('.nav-trigger', this.#navAnimation.bind(this), { once: false });
     new ScrollObserver('.swiper.hero-swiper', this.#toggleHeroAnimation.bind(this), { once: false });
+    new ScrollObserver('.footer__brand', this.#vivusLogoAnimation.bind(this), { once: true });
   }
 
   #toggleHeroAnimation(el, inview) {
@@ -57,6 +59,13 @@ class Main {
     } else {
       this.header.classList.add('is-scrolled');
     }
+  }
+
+  #vivusLogoAnimation(el, inview) {
+    if (inview) {
+      this.vivusLogo.initVivus();
+      console.log('vivus-logo animation started');
+  }
   }
 }
 

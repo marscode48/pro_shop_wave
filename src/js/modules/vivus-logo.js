@@ -1,6 +1,6 @@
 export class VivusLogo {
   constructor() {
-    this.initVivus();
+    // initVivus は ScrollObserver 経由で呼び出す
   }
 
   initVivus() {
