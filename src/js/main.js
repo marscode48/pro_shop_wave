@@ -1,7 +1,6 @@
 // 共通機能（グローバルに影響するもの）を先に
 import { ScrollObserver } from './modules/scroll-observer.js';
 import { GsapAnimations } from './modules/gsap-animations.js';
-import { ScrollHeader } from './modules/scroll-header.js';
 import { HeaderMenu } from './modules/HeaderMenu.js';
 import { ToggleSearch } from './modules/toggle-search.js';
 import { SmoothScrollToTop } from './modules/smooth-scroll-to-top.js';
@@ -15,6 +14,7 @@ import { VivusLogo } from './modules/vivus-logo.js';
 
 class Main {
   constructor() {
+    this.header = document.querySelector('.header');
     this.#init();
   }
 
@@ -23,6 +23,14 @@ class Main {
   }
 
   #scrollInit() {
+    new ScrollObserver('.nav-trigger', this.#navAnimation.bind(this), { once: false });
+  #navAnimation(el, inview) {
+    if (inview) {
+      console.log(el, inview);
+      this.header.classList.remove('is-scrolled');
+    } else {
+      this.header.classList.add('is-scrolled');
+    }
   }
 }
 
