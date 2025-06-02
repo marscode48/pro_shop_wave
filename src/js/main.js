@@ -14,14 +14,16 @@ import { VivusLogo } from './modules/vivus-logo.js';
 
 class Main {
   constructor() {
-    this.header = document.querySelector('.header');
-    this.hero = new HeroSlider('.swiper.hero-swiper');
-    this.heroDelay = 3000;
     this.#init();
   }
 
   #init() {
-    Pace.on('done', this.#scrollInit.bind(this));
+    Pace.on('done', () => {
+      this.header = document.querySelector('.header');
+      this.hero = new HeroSlider('.swiper.hero-swiper');
+      this.heroDelay = 3000;
+      this.#scrollInit();
+    });
     new GsapAnimations({
       breakpoint: 960,
       staggerAmount: 0.2,
