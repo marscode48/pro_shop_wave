@@ -12,10 +12,6 @@ export class SwiperNewArrivals {
       grabCursor: true,
       loop: true,
       centeredSlides: true,
-      autoplay: {
-        delay: 3000, // 次のスライドに切り替わるまでの時間（ミリ秒）
-        disableOnInteraction: false, // ユーザーが操作しても自動再生を止めない
-      },
       pagination: {
         el: '.section--new .swiper-pagination',
         clickable: true,
@@ -39,5 +35,23 @@ export class SwiperNewArrivals {
 
   get instance() {
     return this.swiper;
+  }
+
+  start(options = {}) {
+    options = Object.assign({
+      delay: 4000,
+      disableOnInteraction: false,
+      enabled: true,
+      pauseOnMouseEnter: false,
+      reverseDirection: false,
+      stopOnLastSlide: false,
+      waitForTransition: true,
+    }, options);
+    this.swiper.params.autoplay = options;
+    this.swiper.autoplay.start();
+  }
+
+  stop() {
+    this.swiper.autoplay.stop();
   }
 }
