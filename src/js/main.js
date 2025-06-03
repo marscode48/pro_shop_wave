@@ -27,6 +27,8 @@ class Main {
       this.header = document.querySelector('.header');
       this.hero = new HeroSlider('.swiper.hero-swiper');
       this.heroDelay = 3000;
+      this.newArrivalsSwiper = new SwiperNewArrivals('.new-arrivals-swiper .swiper');
+      this.newArrivalsDelay = 3000;
       this.vivusLogo = new VivusLogo();
 
       this.#scrollInit();
@@ -41,16 +43,13 @@ class Main {
     new HeaderMenu();
     new ToggleSearch();
     new SmoothScrollToTop();
-
-    // SwiperとGSAPによる新着スライダー初期化
-    this.swiperNewArrivals = new SwiperNewArrivals();
-    this.gsapNewArrivals = new GsapNewArrivals(this.swiperNewArrivals.instance);
   }
 
   // スクロールオブザーバーの初期化
   #scrollInit() {
     new ScrollObserver('.nav-trigger', this.#navAnimation.bind(this), { once: false });
     new ScrollObserver('.swiper.hero-swiper', this.#toggleHeroAnimation.bind(this), { once: false });
+    new ScrollObserver('.new-arrivals-swiper .swiper', this.#toggleNewArrivalsAnimation.bind(this), { once: false });
     new ScrollObserver('.footer__brand', this.#vivusLogoAnimation.bind(this), { once: true });
   }
 
@@ -62,6 +61,18 @@ class Main {
     } else {
       this.hero.stop();
       console.log('hero-slider stop is called');
+    }
+  }
+
+  // 新着スライダーの再生／停止切り替え
+  #toggleNewArrivalsAnimation(el, inview) {
+    if (inview) {
+      this.newArrivalsSwiper.start({ delay: this.newArrivalsDelay });
+      this.gsapNewArrivals = new GsapNewArrivals(this.newArrivalsSwiper.instance);
+      console.log('new-arrivals-slider start is called');
+    } else {
+      this.newArrivalsSwiper.stop();
+      console.log('new-arrivals-slider stop is called');
     }
   }
 
