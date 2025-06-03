@@ -25,7 +25,7 @@ class Main {
     // ページ読み込み完了後の処理（Paceを利用）
     Pace.on('done', () => {
       this.header = document.querySelector('.header');
-      this.hero = new HeroSlider('.swiper.hero-swiper');
+      this.heroSlider = new HeroSlider('.swiper.hero-swiper');
       this.heroDelay = 3000;
       this.newArrivalsSwiper = new SwiperNewArrivals('.new-arrivals-swiper .swiper');
       this.newArrivalsDelay = 3000;
@@ -56,11 +56,11 @@ class Main {
   // ヒーロースライダーの再生／停止切り替え
   #toggleHeroAnimation(el, inview) {
     if (inview) {
-      this.hero.start({ delay: this.heroDelay });
-      console.log('hero-slider start is called');
+      this.heroSlider.start({ delay: this.heroDelay });
+      console.log('heroSlider start is called');
     } else {
-      this.hero.stop();
-      console.log('hero-slider stop is called');
+      this.heroSlider.stop();
+      console.log('heroSlider stop is called');
     }
   }
 
@@ -69,10 +69,10 @@ class Main {
     if (inview) {
       this.newArrivalsSwiper.start({ delay: this.newArrivalsDelay });
       this.gsapNewArrivals = new GsapNewArrivals(this.newArrivalsSwiper.instance);
-      console.log('new-arrivals-slider start is called');
+      console.log('newArrivalsSwiper start is called');
     } else {
       this.newArrivalsSwiper.stop();
-      console.log('new-arrivals-slider stop is called');
+      console.log('newArrivalsSwiper stop is called');
     }
   }
 
