@@ -25,6 +25,7 @@ class Main {
     // ページ読み込み完了後の処理（Paceを利用）
     Pace.on('done', () => {
       this.header = document.querySelector('.header');
+      this.ScrollIndicator = document.querySelector('.scroll-indicator');
       this.heroSlider = new HeroSlider('.swiper.hero-swiper');
       this.heroDelay = 3000;
       this.newArrivalsSwiper = new SwiperNewArrivals('.new-arrivals-swiper .swiper');
@@ -48,6 +49,7 @@ class Main {
   // スクロールオブザーバーの初期化
   #scrollInit() {
     new ScrollObserver('.nav-trigger', this.#navAnimation.bind(this), { once: false });
+    new ScrollObserver('.scroll-indicator-trigger', this.#toggleScrollIndicator.bind(this), { once: false, rootMargin: '75px'});
     new ScrollObserver('.swiper.hero-swiper', this.#toggleHeroAnimation.bind(this), { once: false });
     new ScrollObserver('.new-arrivals-swiper .swiper', this.#toggleNewArrivalsAnimation.bind(this), { once: false });
     new ScrollObserver('.footer__brand', this.#vivusLogoAnimation.bind(this), { once: true });
@@ -82,6 +84,15 @@ class Main {
       this.header.classList.remove('is-scrolled');
     } else {
       this.header.classList.add('is-scrolled');
+    }
+  }
+
+  // スクロールインジケータの表示制御
+  #toggleScrollIndicator(el, inview) {
+    if (inview) {
+      this.ScrollIndicator.classList.add('is-visible');
+    } else {
+      this.ScrollIndicator.classList.remove('is-visible');
     }
   }
 
