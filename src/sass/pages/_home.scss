@@ -319,6 +319,7 @@ $marker-anim-duration: var(--marker-animation-duration);
     opacity: 0;
     text-align: center;
     transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
 
     &__text {
       font-size: 0.75rem;
