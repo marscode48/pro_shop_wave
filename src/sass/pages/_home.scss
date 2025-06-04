@@ -169,7 +169,7 @@ $marker-hide-anim-name: hero__text-marker-hide;
 $marker-anim-duration: var(--marker-animation-duration);
 
 .hero {
-  height: calc(100vh - $header-height);
+  height: calc(100svh - $header-height);
   position: relative;
 
   &-swiper {
