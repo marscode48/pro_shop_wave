@@ -40,7 +40,7 @@ ul, ol {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 100svh;
   background-color: rgba(0, 0, 0, 0.5); // 半透明黒
   backdrop-filter: blur(4px);          // 背景をぼかす
   z-index: 98;
@@ -198,7 +198,7 @@ ul, ol {
     top: 0;
     left: 0;
     width: 75vw;
-    height: 100vh;
+    height: 100svh;
     background: linear-gradient(to bottom, rgba($color-black, 0.95), rgba($color-red, 0.8));
     z-index: 99;
     padding-top: $header-height;
