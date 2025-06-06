@@ -18,7 +18,8 @@ import { GsapNewArrivals } from './modules/gsap-new-arrivals.js';
 class Main {
   constructor() {
     this.header = document.querySelector('.header');
-    this.hero = new HeroSlider('.swiper.hero-swiper');
+    this.ScrollIndicator = document.querySelector('.scroll-indicator');
+    this.heroSlider = new HeroSlider('.swiper.hero-swiper');
     this.heroDelay = 3000;
     this.newArrivalsSwiper = new SwiperNewArrivals('.new-arrivals-swiper .swiper');
     this.newArrivalsDelay = 3000;
