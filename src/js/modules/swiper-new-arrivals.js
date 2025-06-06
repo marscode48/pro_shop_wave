@@ -1,12 +1,14 @@
 import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs';
 
 export class SwiperNewArrivals {
-  constructor() {
-    this.initSwiper();
+  // SwiperNewArrivalsの初期化。指定された要素にSwiperを適用する
+  constructor(el = '.new-arrivals-swiper .swiper') {
+    this.el = el;
+    this.swiper = this.initSwiper();
   }
 
   initSwiper() {
-    this.swiper = new Swiper('.section--new .swiper', {
+    return new Swiper(this.el, {
       slidesPerView: 1,
       spaceBetween: 24,
       grabCursor: true,
