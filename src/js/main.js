@@ -17,23 +17,18 @@ import { GsapNewArrivals } from './modules/gsap-new-arrivals.js';
 
 class Main {
   constructor() {
+    this.header = document.querySelector('.header');
+    this.hero = new HeroSlider('.swiper.hero-swiper');
+    this.heroDelay = 3000;
+    this.newArrivalsSwiper = new SwiperNewArrivals('.new-arrivals-swiper .swiper');
+    this.newArrivalsDelay = 3000;
     this.#init();
   }
 
   // 初期化処理
   #init() {
     // ページ読み込み完了後の処理（Paceを利用）
-    Pace.on('done', () => {
-      this.header = document.querySelector('.header');
-      this.ScrollIndicator = document.querySelector('.scroll-indicator');
-      this.heroSlider = new HeroSlider('.swiper.hero-swiper');
-      this.heroDelay = 3000;
-      this.newArrivalsSwiper = new SwiperNewArrivals('.new-arrivals-swiper .swiper');
-      this.newArrivalsDelay = 3000;
-      this.vivusLogo = new VivusLogo();
-
-      this.#scrollInit();
-    });
+    Pace.on('done', this.#scrollInit.bind(this));
 
     // ページロード時に即座に必要な機能の初期化
     new GsapAnimations({
@@ -99,7 +94,7 @@ class Main {
   // Vivusロゴアニメーションの発火
   #vivusLogoAnimation(el, inview) {
     if (inview) {
-      this.vivusLogo.initVivus();
+      new VivusLogo();
       console.log('vivus-logo animation started');
     }
   }
