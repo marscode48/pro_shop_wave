@@ -84,7 +84,7 @@ class Main {
   // Vivusロゴアニメーションの発火
   #vivusLogoAnimation(el, inview) {
     if (inview) {
-      this.vivusLogo.initVivus();
+      new VivusLogo();
       console.log('vivus-logo animation started');
     }
   }
