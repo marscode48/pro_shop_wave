@@ -301,7 +301,17 @@
       <div class="section-group">
         <div class="section-bg">
           <picture class="section-bg__picture parallax" data-speed="35">
-            <source media="(min-width: 960px)" srcset="./images/bg_newparts_blog_parallax_pc.jpg">
+            <!-- PC: webp -->
+            <source media="(min-width: 960px)" srcset="./images/bg_newparts_blog_parallax_pc.webp" type="image/webp">
+            <!-- PC: jpg -->
+            <source media="(min-width: 960px)" srcset="./images/bg_newparts_blog_parallax_pc.jpg" type="image/jpeg">
+      
+            <!-- SP: webp -->
+            <source srcset="./images/bg_newparts_blog_parallax_sp.webp" type="image/webp">
+            <!-- SP: jpg -->
+            <source srcset="./images/bg_newparts_blog_parallax_sp.jpg" type="image/jpeg">
+      
+            <!-- fallback -->
             <img src="./images/bg_newparts_blog_parallax_sp.jpg" alt="背景画像" class="section-bg__img">
           </picture>
         </div>
