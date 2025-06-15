@@ -398,14 +398,16 @@ ul, ol {
       align-items: center;
       justify-content: center;
       color: $color-white;
-      transition: color $transition;
 
       @include mq(lg) {
         font-size: 1.4rem;
+        transition: color $transition;
       }
   
       &:hover {
-        color: $color-red;
+        @include mq(lg) {
+          color: $color-red;
+        }
       }
     }
   
@@ -656,10 +658,14 @@ ul, ol {
     a {
       color: $color-white;
       font-size: 2em;
-      transition: color $transition;
+      @include mq(lg) {
+        transition: color $transition;
+      }
   
-      &:hover {
-        color: $color-red;
+      @include mq(lg) {
+        &:hover {
+          color: $color-red;
+        }
       }
     }
   }
