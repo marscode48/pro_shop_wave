@@ -400,16 +400,6 @@ $marker-anim-duration: var(--marker-animation-duration);
 // New Parts セクション
 // ========================
 .section--new {
-  // background-color: $color-black;
-
-  .section__title {
-    font-family: $font-heading;
-    text-align: center;
-    font-size: clamp(1.5rem, 4vw, 2.4rem);
-    margin-bottom: 2rem;
-    color: $color-white;
-    text-transform: uppercase;
-  }
 
   .new-arrivals-swiper {
     position: relative;
